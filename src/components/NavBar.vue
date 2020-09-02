@@ -1,9 +1,10 @@
 <template>
-  <div class="nav-bar">
+  <div>
     <b-navbar
       fixed
       type="dark"
       variant="dark"
+      style="height: 60px"
     >
       <b-navbar-brand>PNW trees</b-navbar-brand>
       <b-navbar-nav class="ml-auto">
@@ -27,28 +28,29 @@
       fixed
       type="dark"
       variant="info"
+      style="height: 40px"
     >
       <span>{{ selectedView }} view</span>
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown
-          text="Sort By"
+          text="Sort"
           right
         >
           <b-dropdown-item
             v-for="(name, index) in sortingOptions"
             :key="index"
             @click="sortDisplayRows(name)"
-          >{{ name }}</b-dropdown-item>
+          >{{ startCase(name) }}</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown
-          text="Type"
+          text="Filter"
           right
         >
           <b-dropdown-item
             v-for="(option, index) in filterOptions"
             :key="index"
             @click="applyFilter(option)"
-          >{{ type }}</b-dropdown-item>
+          >{{ startCase(option) }}</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-navbar>
@@ -56,18 +58,22 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { startCase } from "lodash";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "NavBar",
   computed: {
     ...mapState(["treeTypes", "selectedView", "sortingOptions"]),
 
+    ...mapGetters(["treeTags"]),
+
     filterOptions() {
-      return [...this.treeTypes, "All"];
+      return ["All", ...this.treeTags];
     }
   },
   methods: {
+    startCase,
+
     ...mapActions(["changeView", "applyFilter", "sortDisplayRows"])
 
     // sortDisplayRows(selection) {
@@ -76,9 +82,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.nav-bar {
-  margin-bottom: 20px;
-}
-</style>

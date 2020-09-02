@@ -21,6 +21,6 @@ export default {
   },
 
   SET_FILTER(state, selection) {
-    state.selectedFilter = "";
+    state.selectedFilter = selection;
   },
 };
