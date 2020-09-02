@@ -6,13 +6,13 @@
           hover
           outlined
           :items="trees"
-          :fields="fields"
+          :fields="Object.keys(trees)"
         >
           <template
             slot="type"
             slot-scope="data"
           >
-            <b-badge :style="{'background-color': getTagColor(data.item.type) }">{{ data.value }}</b-badge>
+            <b-badge :style="{'background-color': tagColorMap(data.item.tag) }">{{ data.value }}</b-badge>
           </template>
         </b-table>
         <br>

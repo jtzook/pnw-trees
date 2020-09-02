@@ -26,7 +26,7 @@
           @click="fetchTrees"
           variant="outline-info"
           style="margin-left: 20px"
-        >Fetch Trees</b-button>
+        >Fetch More Trees</b-button>
       </b-navbar-nav>
     </b-navbar>
     <b-navbar

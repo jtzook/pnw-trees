@@ -6,12 +6,13 @@ export default {
     state.fetchError = null;
   },
 
-  FETCH_TREE_SUCCESS(state, trees) {
+  FETCH_TREES_SUCCESS(state, trees) {
+    console.log("trees fetched:", trees);
     state.trees = trees;
     state.loading = false;
   },
 
-  FETCH_TREE_FAILURE(state, error) {
+  FETCH_TREES_FAILURE(state, error) {
     state.fetchError = error;
     state.loading = false;
   },

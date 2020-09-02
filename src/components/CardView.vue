@@ -9,8 +9,8 @@
           >
             <b-card
               class="tree-card"
-              :title="title"
-              :img-src="''"
+              :title="'temporary title'"
+              :img-src="tree.url_n"
               img-height="150px"
               img-alt="Tree Image"
               img-top
@@ -39,12 +39,17 @@
 
 <script>
 import { mapState } from "vuex";
+import { startCase } from "lodash";
 
 export default {
   name: "CardView",
 
   computed: {
     ...mapState(["trees", "treeTypes"])
+  },
+
+  methods: {
+    startCase
   }
 };
 </script>
