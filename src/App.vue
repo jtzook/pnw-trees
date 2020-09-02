@@ -1,16 +1,31 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <NavBar />
+
+    <b-row class="justify-content-center">
+      <b-col cols="10">
+        <h1> Trees </h1>
+        <hr style="background-color: black;">
+      </b-col>
+    </b-row>
+    <div v-if="selectedView === 'card'">
+      <CardView />
+    </div>
+    <!-- <div v-else>
+      <TableView/>
+    </div> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import NavBar from "./components/NavBar.vue";
+// import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    NavBar
+    // HelloWorld
   }
 };
 </script>

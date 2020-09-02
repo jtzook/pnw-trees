@@ -1,6 +1,10 @@
 export default {
   trees: [],
-  treeTypes: ["a", "b", "c"],
+  treeTypes: ["japanese maple", "douglas fir"],
+
+  selectedView: "card",
+  selectedFilter: "",
+  sortingOptions: ["name", "type"],
 
   loading: false,
   fetchError: null,

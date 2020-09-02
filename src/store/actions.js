@@ -14,7 +14,7 @@ export default {
         params: {
           method: "flickr.photos.search",
           api_key: config.api_key,
-          tags: tag,
+          tags: ["japanese maple", tag],
           extras: "url_n, owner_name, date_taken, views, machine_tags",
           page: 1,
           format: "json",
@@ -37,4 +37,10 @@ export default {
       commit("FETCH_TREE_FAILURE", e);
     }
   },
+
+  // applyFilter: ({ commit }, selection) => {},
+
+  changeView: ({ commit }, selection) => commit("SET_VIEW", selection),
+
+  // sortDisplayRows: ({ commit }, selection) => {},
 };

@@ -15,4 +15,12 @@ export default {
     state.fetchError = error;
     state.loading = false;
   },
+
+  SET_VIEW(state, selection) {
+    state.selectedView = selection;
+  },
+
+  SET_FILTER(state, selection) {
+    state.selectedFilter = "";
+  },
 };
