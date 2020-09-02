@@ -22,6 +22,11 @@
             @click="changeView('table')"
           >Table</b-button>
         </b-button-group>
+        <b-button
+          @click="fetchTrees"
+          variant="outline-info"
+          style="margin-left: 20px"
+        >Fetch Trees</b-button>
       </b-navbar-nav>
     </b-navbar>
     <b-navbar
@@ -74,7 +79,12 @@ export default {
   methods: {
     startCase,
 
-    ...mapActions(["changeView", "applyFilter", "sortDisplayRows"])
+    ...mapActions([
+      "fetchTrees",
+      "changeView",
+      "applyFilter",
+      "sortDisplayRows"
+    ])
 
     // sortDisplayRows(selection) {
     //   this.$store.dispatch("sortDisplayRows", selection);

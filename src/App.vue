@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 import NavBar from "./components/NavBar.vue";
 import CardView from "./components/CardView.vue";
@@ -37,7 +37,15 @@ export default {
   computed: {
     ...mapState(["selectedView"]),
 
-    ...mapGetters(["tagColorMap"])
+    ...mapGetters(["treeTags", "tagColorMap"])
+  },
+
+  methods: {
+    ...mapActions(["fetchTrees"])
+  },
+
+  created() {
+    this.fetchTrees();
   }
 };
 </script>

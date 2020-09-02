@@ -5,7 +5,7 @@
         <b-table
           hover
           outlined
-          :items="getRestaurants"
+          :items="trees"
           :fields="fields"
         >
           <template
