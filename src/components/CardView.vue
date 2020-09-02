@@ -9,8 +9,8 @@
           >
             <b-card
               class="tree-card"
-              :title="'temporary title'"
-              :img-src="tree.url_n"
+              :title="startCase(tree.name)"
+              :img-src="tree.imgUrl"
               img-height="150px"
               img-alt="Tree Image"
               img-top
@@ -25,7 +25,7 @@
                 </div> -->
               </b-card-text>
               <div slot="footer">
-                <!-- <b-badge :style="{'background-color': getTagColor(restaurant.type) }">{{ restaurant.type }}</b-badge> -->
+                <b-badge :style="{'background-color': getTagColor(tree.tag) }">{{ tree.tag }}</b-badge>
               </div>
             </b-card>
           </div>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 import { startCase } from "lodash";
 
 export default {
@@ -49,7 +49,9 @@ export default {
   },
 
   methods: {
-    startCase
+    startCase,
+
+    ...mapActions(["getTagColor"])
   }
 };
 </script>

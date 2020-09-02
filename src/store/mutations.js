@@ -7,7 +7,6 @@ export default {
   },
 
   FETCH_TREES_SUCCESS(state, trees) {
-    console.log("trees fetched:", trees);
     state.trees = trees;
     state.loading = false;
   },

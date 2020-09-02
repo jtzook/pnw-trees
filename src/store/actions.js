@@ -59,6 +59,7 @@ export default {
                 title: p.title,
                 extraTags: p.tags,
                 timeStamp: p.datetaken,
+                imgUrl: p.url_n,
               });
             });
           }
@@ -69,6 +70,12 @@ export default {
     } catch (e) {
       commit("FETCH_TREES_FAILURE", e);
     }
+  },
+
+  getTagColor: ({ state, getters }, tag) => {
+    const tagIndex = getters.treeTags.indexOf(tag);
+
+    return state.colorPalette[tagIndex % state.colorPalette.length];
   },
 
   // applyFilter: ({ commit }, selection) => {},

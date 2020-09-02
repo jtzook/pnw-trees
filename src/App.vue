@@ -9,11 +9,9 @@
       </b-col>
     </b-row>
 
-    <div v-if="selectedView === 'card'">
-      <CardView />
-    </div>
-    <div v-else>
-      <TableView />
+    <div class="text-center">
+      <CardView v-if="selectedView === 'card'" />
+      <TableView v-else />
     </div>
   </div>
 </template>
@@ -37,7 +35,7 @@ export default {
   computed: {
     ...mapState(["selectedView"]),
 
-    ...mapGetters(["treeTags", "tagColorMap"])
+    ...mapGetters(["treeTags"])
   },
 
   methods: {

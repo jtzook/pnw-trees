@@ -12,7 +12,7 @@
             slot="type"
             slot-scope="data"
           >
-            <b-badge :style="{'background-color': tagColorMap(data.item.tag) }">{{ data.value }}</b-badge>
+            <b-badge :style="{'background-color': getTagColor(data.item.tag) }">{{ data.value }}</b-badge>
           </template>
         </b-table>
         <br>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
   name: "TableView",
@@ -30,7 +30,11 @@ export default {
   computed: {
     ...mapState(["trees", "treeTypes"]),
 
-    ...mapGetters(["treeTags", "tagColorMap"])
+    ...mapGetters(["treeTags"])
+  },
+
+  methods: {
+    ...mapActions(["getTagColor"])
   }
 };
 </script>
