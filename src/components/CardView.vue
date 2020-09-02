@@ -11,18 +11,21 @@
               class="tree-card"
               :title="startCase(tree.name)"
               :img-src="tree.imgUrl"
-              img-height="150px"
+              img-height="200px"
               img-alt="Tree Image"
               img-top
             >
-              <b-card-text>
-                text
-                <!-- <div v-if="restaurant.phone">
-                  <p><strong>Phone:</strong> {{ restaurant.phone }}</p>
+              <b-card-text class="text-left overflow-hidden">
+                <div v-if="tree.timeStamp">
+                  <p><strong>Timestamp</strong><br> {{ 
+                    new Date(tree.timeStamp).toLocaleDateString('en-US', {
+                      year: 'numeric', month: 'long', day: 'numeric'
+                    }) 
+                  }}</p>
                 </div>
-                <div v-if="restaurant.website">
-                  <p><strong>Website: </strong><br><a :href="restaurant.website"><small>{{ restaurant.website }}</small></a></p>
-                </div> -->
+                <div v-if="tree.title">
+                  <p><strong>User Title</strong><br> {{ tree.title }} </p>
+                </div>
               </b-card-text>
               <div slot="footer">
                 <b-badge :style="{'background-color': getTagColor(tree.tag) }">{{ tree.tag }}</b-badge>
@@ -58,10 +61,10 @@ export default {
 
 <style scoped>
 .tree-card {
+  object-fit: cover;
   min-width: 15rem;
-  max-width: 15rem;
-  min-height: 26rem;
+  max-width: 20rem;
   max-height: 26rem;
-  margin: 0 1em 1em 0;
+  margin: 0 1em 2em 0;
 }
 </style>

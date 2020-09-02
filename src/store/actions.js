@@ -8,8 +8,6 @@ export default {
   fetchTrees: async ({ state, commit }) => {
     commit("FETCHING_TREES");
 
-    let trees = [];
-
     try {
       // https://www.flickr.com/services/api/flickr.photos.search.html
 
@@ -26,7 +24,7 @@ export default {
               tags: tree.tag,
               extras: "url_n, date_taken, tags",
               page: 1,
-              per_page: 3,
+              per_page: 10,
               format: "json",
               nojsoncallback: 1,
               safe_search: true,

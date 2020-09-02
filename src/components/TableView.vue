@@ -1,20 +1,15 @@
 <template>
   <div>
     <b-row class="justify-content-center">
-      <b-col cols="6">
+      <b-col cols="10">
         <b-table
           hover
           outlined
+          stacked="md"
           :items="trees"
-          :fields="Object.keys(trees)"
-        >
-          <template
-            slot="type"
-            slot-scope="data"
-          >
-            <b-badge :style="{'background-color': getTagColor(data.item.tag) }">{{ data.value }}</b-badge>
-          </template>
-        </b-table>
+          :fields="fields"
+          head-variant="dark"
+        ></b-table>
         <br>
       </b-col>
     </b-row>
@@ -26,6 +21,28 @@ import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
   name: "TableView",
+
+  data() {
+    return {
+      fields: [
+        "name",
+        "title",
+        {
+          key: "timeStamp",
+          label: "Timestamp",
+          formatter: value => {
+            return new Date(value).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric"
+            });
+          }
+        },
+        "tag",
+        "extraTags"
+      ]
+    };
+  },
 
   computed: {
     ...mapState(["trees", "treeTypes"]),
