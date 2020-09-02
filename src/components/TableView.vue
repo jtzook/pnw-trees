@@ -6,7 +6,7 @@
           hover
           outlined
           stacked="md"
-          :items="trees"
+          :items="selectedTrees"
           :fields="fields"
           head-variant="dark"
         ></b-table>
@@ -45,9 +45,9 @@ export default {
   },
 
   computed: {
-    ...mapState(["trees", "treeTypes"]),
+    ...mapState(["treeTypes"]),
 
-    ...mapGetters(["treeTags"])
+    ...mapGetters(["treeTags", "selectedTrees"])
   },
 
   methods: {

@@ -23,4 +23,8 @@ export default {
   SET_FILTER(state, selection) {
     state.selectedFilter = selection;
   },
+
+  SET_SORT(state, selection) {
+    state.selectedSort = selection;
+  },
 };

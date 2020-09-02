@@ -1,4 +1,16 @@
+import { sortBy } from "lodash";
+
 export default {
+  selectedTrees: (state) => {
+    const filteredTrees = state.trees.filter((t) => {
+      return state.selectedFilter.length && state.selectedFilter !== "All"
+        ? t.tag === state.selectedFilter
+        : t;
+    });
+
+    return sortBy(filteredTrees, state.selectedSort);
+  },
+
   treeTags: (state) => {
     return [...new Set(state.treeTypes.map((t) => t.tag))];
   },

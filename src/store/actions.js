@@ -24,7 +24,7 @@ export default {
               tags: tree.tag,
               extras: "url_n, date_taken, tags",
               page: 1,
-              per_page: 10,
+              per_page: 1,
               format: "json",
               nojsoncallback: 1,
               safe_search: true,
@@ -76,9 +76,13 @@ export default {
     return state.colorPalette[tagIndex % state.colorPalette.length];
   },
 
-  // applyFilter: ({ commit }, selection) => {},
+  applyFilter: ({ commit }, selection) => {
+    commit("SET_FILTER", selection);
+  },
 
   changeView: ({ commit }, selection) => commit("SET_VIEW", selection),
 
-  // sortDisplayRows: ({ commit }, selection) => {},
+  sortDisplayRows: ({ commit }, selection) => {
+    commit("SET_SORT", selection);
+  },
 };

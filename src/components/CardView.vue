@@ -2,9 +2,9 @@
   <div>
     <b-row class="justify-content-center">
       <b-col cols="10">
-        <b-card-group deck>
+        <b-card-group columns>
           <div
-            v-for="tree in trees"
+            v-for="tree in selectedTrees"
             :key="tree.id"
           >
             <b-card
@@ -41,14 +41,16 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 import { startCase } from "lodash";
 
 export default {
   name: "CardView",
 
   computed: {
-    ...mapState(["trees", "treeTypes"])
+    ...mapState(["treeTypes"]),
+
+    ...mapGetters(["selectedTrees"])
   },
 
   methods: {
@@ -61,10 +63,16 @@ export default {
 
 <style scoped>
 .tree-card {
-  object-fit: cover;
-  min-width: 15rem;
   max-width: 20rem;
-  max-height: 26rem;
+  max-height: 30rem;
   margin: 0 1em 2em 0;
+}
+
+.tree-card > img {
+  object-fit: cover !important;
+}
+
+.tree-card > .card-body {
+  overflow: hidden;
 }
 </style>

@@ -33,6 +33,7 @@ export default {
   ],
 
   selectedView: "card",
+  selectedSort: "name",
   selectedFilter: "",
   sortingOptions: ["name", "tag"],
 
