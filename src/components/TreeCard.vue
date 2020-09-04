@@ -55,7 +55,7 @@ export default {
         userTags = this.tree.extraTags.split(" ");
 
         if (userTags.length > tagLimit) {
-          userTags = userTags.slice(0, 5);
+          userTags = userTags.slice(0, tagLimit);
         }
       }
 
