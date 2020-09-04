@@ -57,10 +57,11 @@ export default {
   color: #2c3e50;
 }
 
-.tag {
+.tree-tag {
+  color: white;
   display: inline-block;
-  padding: 0.25em 0.4em;
-  font-size: 75%;
+  padding: 0.3em 0.8em;
+  font-size: 80%;
   font-weight: 700;
   line-height: 1;
   text-align: center;

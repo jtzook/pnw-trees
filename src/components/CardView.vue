@@ -11,21 +11,21 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
-import { TreeCard } from "./TreeCard";
+import TreeCard from "./TreeCard";
 
 export default {
   name: "CardView",
+
+  components: {
+    TreeCard
+  },
 
   computed: {
     ...mapState(["treeTypes"]),
 
     ...mapGetters(["selectedTrees"])
-  },
-
-  methods: {
-    startCase
   }
 };
 </script>
