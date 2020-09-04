@@ -29,19 +29,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.tree-card {
-  max-width: 20rem;
-  max-height: 30rem;
-  margin: 0 1em 2em 0;
-}
-
-.tree-card > img {
-  object-fit: cover !important;
-}
-
-.tree-card > .card-body {
-  overflow: hidden;
-}
-</style>
