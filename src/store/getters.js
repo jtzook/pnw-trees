@@ -8,7 +8,7 @@ export default {
         : t;
     });
 
-    return sortBy(filteredTrees, state.selectedSort);
+    return state.selectedSort ? sortBy(filteredTrees, state.selectedSort) : filteredTrees;
   },
 
   treeTags: (state) => {
