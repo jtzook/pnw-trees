@@ -1,23 +1,22 @@
 <template>
-  <b-card
-    class="tree-card"
-    :title="startCase(tree.name)"
-    :img-src="tree.imgUrl"
-    img-height="200px"
-    img-alt="Tree Image"
-    img-top
-  >
+  <b-card class="tree-card" :img-src="tree.imgUrl" img-height="200px" img-alt="Tree Image" img-top>
+    <b-card-title>
+      <div class="tree-card-title">{{ startCase(tree.name) }}</div>
+    </b-card-title>
     <b-card-text class="text-left">
       <p v-if="tree.timeStamp">
         <strong>Timestamp</strong>
+        <br />
         {{ formattedTimestamp }}
       </p>
       <p v-if="tree.title">
         <strong>User Title</strong>
+        <br />
         {{ tree.title }}
       </p>
       <p v-if="tree.extraTags">
         <strong>User Tags</strong>
+        <br />
         {{ initialTags }}
       </p>
     </b-card-text>
@@ -78,9 +77,16 @@ export default {
 </script>
 
 <style scoped>
+.tree-card-title {
+  font-weight: bold;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
 .tree-card {
   max-width: 20rem;
-  max-height: 30rem;
+  min-height: 30rem;
   margin: 0 1em 2em 0;
 }
 
