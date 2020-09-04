@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { get } from "lodash";
-import config from "../../config";
+import config from "../../config/config";
 
 export default {
   fetchTrees: async ({ state, commit }) => {
