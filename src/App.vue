@@ -5,7 +5,7 @@
     <b-row class="page-heading justify-content-center">
       <b-col cols="10">
         <h1>Trees</h1>
-        <hr style="background-color: black">
+        <hr style="background-color: black" />
       </b-col>
     </b-row>
 
@@ -55,6 +55,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
 }
 </style>
 

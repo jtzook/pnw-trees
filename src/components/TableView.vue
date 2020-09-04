@@ -10,7 +10,7 @@
           :fields="fields"
           head-variant="dark"
         ></b-table>
-        <br>
+        <br />
       </b-col>
     </b-row>
   </div>
@@ -48,10 +48,6 @@ export default {
     ...mapState(["treeTypes"]),
 
     ...mapGetters(["treeTags", "selectedTrees"])
-  },
-
-  methods: {
-    ...mapActions(["getTagColor"])
   }
 };
 </script>

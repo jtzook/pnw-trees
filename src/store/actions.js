@@ -70,12 +70,6 @@ export default {
     }
   },
 
-  getTagColor: ({ state, getters }, tag) => {
-    const tagIndex = getters.treeTags.indexOf(tag);
-
-    return state.colorPalette[tagIndex % state.colorPalette.length];
-  },
-
   applyFilter: ({ commit }, selection) => {
     commit("SET_FILTER", selection);
   },
