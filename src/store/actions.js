@@ -11,9 +11,19 @@ export default {
     try {
       // https://www.flickr.com/services/api/flickr.photos.search.html
 
+      const shuffle = (a) => {
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      };
+
+      const shuffledTrees = shuffle(state.treeTypes);
+
       const promises = [];
 
-      state.treeTypes.map((tree) =>
+      shuffledTrees.map((tree) =>
         promises.push(
           axios({
             method: "get",
@@ -53,6 +63,8 @@ export default {
           if (photoArray.length) {
             photoArray.map((p) => {
               if (!treeIds.includes(p.id)) {
+                treeIds.push(p.id);
+
                 trees.push({
                   name: state.treeTypes[index].name,
                   tag: state.treeTypes[index].tag,
