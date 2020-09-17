@@ -1,13 +1,11 @@
 export default {
   colorPalette: [
-    "#18a1b7",
-    "#8699ee",
-    "#4355b9",
-    "#60eea3",
-    "#345a42",
-    "#a2e0dd",
-    "#2ca559",
-    "#c9dd87"
+    "#448b27",
+    "#ace600",
+    "#ac5839",
+    "#e03838",
+    "#ff6a1a",
+    "#fbc337"
   ],
 
   trees: [],
