@@ -1,5 +1,11 @@
 <template>
-  <b-card class="tree-card" :img-src="tree.imgUrl" img-height="200px" img-alt="Tree Image" img-top>
+  <b-card
+    class="tree-card"
+    :img-src="tree.imgUrl"
+    img-height="200px"
+    img-alt="Tree Image"
+    img-top
+  >
     <b-card-title>
       <div class="tree-card-title">{{ startCase(tree.name) }}</div>
     </b-card-title>
@@ -21,7 +27,12 @@
       </p>
     </b-card-text>
     <template slot="footer">
-      <div class="tree-tag" :style="{'background-color': tagColorMap[tree.tag]}">{{ tree.tag }}</div>
+      <div
+        class="tree-tag"
+        :style="{ 'background-color': tagColorMap[tree.tag] }"
+      >
+        {{ tree.tag }}
+      </div>
     </template>
   </b-card>
 </template>

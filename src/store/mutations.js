@@ -29,5 +29,5 @@ export default {
 
   SET_SORT(state, selection) {
     state.selectedSort = selection;
-  },
+  }
 };

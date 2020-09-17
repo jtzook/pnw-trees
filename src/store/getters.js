@@ -1,18 +1,20 @@
 import { sortBy } from "lodash";
 
 export default {
-  selectedTrees: (state) => {
-    const filteredTrees = state.trees.filter((t) => {
+  selectedTrees: state => {
+    const filteredTrees = state.trees.filter(t => {
       return state.selectedFilter.length && state.selectedFilter !== "All"
         ? t.tag === state.selectedFilter
         : t;
     });
 
-    return state.selectedSort ? sortBy(filteredTrees, state.selectedSort) : filteredTrees;
+    return state.selectedSort
+      ? sortBy(filteredTrees, state.selectedSort)
+      : filteredTrees;
   },
 
-  treeTags: (state) => {
-    return [...new Set(state.treeTypes.map((t) => t.tag))];
+  treeTags: state => {
+    return [...new Set(state.treeTypes.map(t => t.tag))];
   },
 
   tagColorMap: (state, getters) => {
@@ -23,5 +25,5 @@ export default {
     });
 
     return map;
-  },
+  }
 };

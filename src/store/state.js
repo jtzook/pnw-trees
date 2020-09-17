@@ -7,7 +7,7 @@ export default {
     "#345a42",
     "#a2e0dd",
     "#2ca559",
-    "#c9dd87",
+    "#c9dd87"
   ],
 
   trees: [],
@@ -29,7 +29,7 @@ export default {
     { name: "paper birch", tag: "birch" },
     { name: "yellow cedar", tag: "cedar" },
     { name: "incense cedar", tag: "cedar" },
-    { name: "mountain mahogany", tag: "mahogany" },
+    { name: "mountain mahogany", tag: "mahogany" }
   ],
 
   selectedView: "card",
@@ -38,5 +38,5 @@ export default {
   sortingOptions: ["name", "tag"],
 
   loading: false,
-  fetchError: null,
+  fetchError: null
 };
