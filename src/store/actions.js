@@ -6,7 +6,7 @@ import config from "../../config/config";
 
 export default {
   fetchTrees: async ({ state, commit }) => {
-    commit("FETCHING_TREES");
+    commit("FETCH_TREES");
 
     try {
       // https://www.flickr.com/services/api/flickr.photos.search.html

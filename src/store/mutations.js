@@ -1,7 +1,7 @@
 // import state from "./state";
 
 export default {
-  FETCHING_TREES(state) {
+  FETCH_TREES(state) {
     state.loading = true;
     state.trees = [];
     state.selectedSort = "";
