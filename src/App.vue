@@ -2,11 +2,8 @@
   <div id="app">
     <NavBar />
 
-    <div
-      class="d-flex text-center"
-      style="height: calc(100% - 100px) !important"
-    >
-      <LoadingAnimation v-show="loading" class="align-self-center" />
+    <div class="content d-flex text-center">
+      <LoadingAnimation class="align-self-center" />
       <!-- <div v-show="!loading" class="py-4">
         <CardView v-if="selectedView === 'card'" />
         <TableView v-else />
@@ -75,8 +72,12 @@ export default {
 }
 </style>
 
-<style scoped>
+<style lang="scss" scoped>
 .page-heading {
   margin: 20px 0;
+}
+
+.content {
+  height: calc(100% - 100px);
 }
 </style>
