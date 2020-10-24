@@ -4,6 +4,7 @@
 
 <style scoped>
 .container {
+  padding: 20px;
   height: 400px;
   width: 400px;
   border: 1px solid black;

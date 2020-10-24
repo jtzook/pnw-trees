@@ -2,10 +2,12 @@
   <div id="app">
     <NavBar />
 
-    <div class="text-center py-4">
-      <LoadingAnimation />
-      <!-- <LoadingAnimation v-show="loading" />
-      <div v-show="!loading">
+    <div
+      class="d-flex text-center"
+      style="height: calc(100% - 100px) !important"
+    >
+      <LoadingAnimation v-show="loading" class="align-self-center" />
+      <!-- <div v-show="!loading" class="py-4">
         <CardView v-if="selectedView === 'card'" />
         <TableView v-else />
       </div> -->
@@ -56,6 +58,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100vh;
 }
 
 .tree-tag {
