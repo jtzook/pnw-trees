@@ -1,5 +1,3 @@
-// import state from "./state";
-
 export default {
   FETCH_TREES(state) {
     state.loading = true;

@@ -22,9 +22,11 @@
         <b-button
           @click="fetchTrees"
           variant="outline-info"
-          style="margin-left: 20px"
-          >Fetch More Trees</b-button
+          :style="refetchButton"
         >
+          <BIconArrowClockwise v-if="loading" rotate="90" animation="spin" />
+          <BIconArrowClockwise v-else rotate="90" />
+        </b-button>
       </b-navbar-nav>
     </b-navbar>
     <b-navbar fixed type="dark" variant="info" style="height: 40px">
@@ -54,17 +56,34 @@
 <script>
 import { startCase } from "lodash";
 import { mapState, mapGetters, mapActions } from "vuex";
+import { BIconArrowClockwise } from "bootstrap-vue";
 
 export default {
-  computed: {
-    ...mapState(["treeTypes", "selectedView", "sortingOptions"]),
+  components: {
+    BIconArrowClockwise
+  },
 
+  data() {
+    return {
+      refetchButton: {
+        width: "38px",
+        display: "flex",
+        padding: "8.5px 0 0",
+        "justify-content": "center",
+        "margin-left": "10px"
+      }
+    };
+  },
+
+  computed: {
     ...mapGetters(["treeTags"]),
+    ...mapState(["treeTypes", "selectedView", "sortingOptions", "loading"]),
 
     filterOptions() {
       return ["All", ...this.treeTags];
     }
   },
+
   methods: {
     startCase,
 
@@ -74,10 +93,6 @@ export default {
       "applyFilter",
       "sortDisplayRows"
     ])
-
-    // sortDisplayRows(selection) {
-    //   this.$store.dispatch("sortDisplayRows", selection);
-    // }
   }
 };
 </script>
