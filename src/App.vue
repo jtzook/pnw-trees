@@ -2,14 +2,7 @@
   <div id="app">
     <NavBar />
 
-    <b-row class="page-heading justify-content-center">
-      <b-col cols="10">
-        <h1>Trees</h1>
-        <hr style="background-color: black" />
-      </b-col>
-    </b-row>
-
-    <div class="text-center">
+    <div class="text-center py-4">
       <CardView v-if="selectedView === 'card'" />
       <TableView v-else />
     </div>

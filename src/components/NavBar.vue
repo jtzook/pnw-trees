@@ -24,8 +24,8 @@
           variant="outline-info"
           :style="refetchButton"
         >
-          <BIconArrowClockwise v-if="loading" rotate="90" animation="spin" />
-          <BIconArrowClockwise v-else rotate="90" />
+          <BIconArrowClockwise v-if="loading" rotate="315" animation="spin" />
+          <BIconArrowClockwise v-else rotate="315" />
         </b-button>
       </b-navbar-nav>
     </b-navbar>
