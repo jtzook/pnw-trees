@@ -3,8 +3,12 @@
     <NavBar />
 
     <div class="text-center py-4">
-      <CardView v-if="selectedView === 'card'" />
-      <TableView v-else />
+      <LoadingAnimation />
+      <!-- <LoadingAnimation v-show="loading" />
+      <div v-show="!loading">
+        <CardView v-if="selectedView === 'card'" />
+        <TableView v-else />
+      </div> -->
     </div>
   </div>
 </template>
@@ -15,18 +19,22 @@ import { mapState, mapGetters, mapActions } from "vuex";
 import NavBar from "./components/NavBar.vue";
 import CardView from "./components/CardView.vue";
 import TableView from "./components/TableView.vue";
+import LoadingAnimation from "./components/LoadingAnimation.vue";
 
 export default {
   name: "App",
 
+  /* eslint-disable vue/no-unused-components */
+
   components: {
     NavBar,
     CardView,
-    TableView
+    TableView,
+    LoadingAnimation
   },
 
   computed: {
-    ...mapState(["selectedView"]),
+    ...mapState(["selectedView", "loading"]),
 
     ...mapGetters(["treeTags"])
   },
