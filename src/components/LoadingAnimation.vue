@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <div class="leaf-compass">
-      <div
-        v-for="direction in compassDirections"
-        :key="direction"
-        :class="['leaf', direction]"
-      ></div>
+    <div
+      v-for="direction in compassDirections"
+      :key="direction"
+      class="leaf-node"
+    >
+      <div :class="['leaf', direction]"></div>
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      compassDirections: ["n", "ne", "e", "se", "s", "sw", "w", "nw"]
+      compassDirections: ["e", "se", "s", "sw", "w", "nw", "n", "ne"]
     };
   }
 };
@@ -27,29 +27,63 @@ export default {
   border: 1px solid black;
 }
 
-.leaf-compass {
-  $numLeaves: 8;
+.leaf-node {
+  display: block;
+  position: absolute;
+  top: 50.5%;
+  left: 47.25%;
+  height: 100%;
+
+  $angle: 45;
+  $rotationDeg: 0;
+
+  @for $i from 1 through 8 {
+    &:nth-of-type(#{$i}) {
+      transform: rotate($rotationDeg * 1deg)
+        translate(5em)
+        rotate($rotationDeg * -1deg);
+    }
+
+    $rotationDeg: $rotationDeg + $angle;
+  }
 
   .leaf {
-    display: block;
-    position: absolute;
-    top: 21em;
-    left: 13.5em;
-    height: 6em;
+    $baseRotationAngle: 11deg;
 
-    $angle: (360 / $numLeaves);
-    $rotationDeg: 0;
-
+    height: 14%;
+    transform: rotate(10deg);
     content: url("../../assets/black-leaf.png");
 
-    @for $i from 1 through $numLeaves {
-      &:nth-of-type(#{$i}) {
-        transform: rotate($rotationDeg * 1deg)
-          translate(5em)
-          rotate($rotationDeg * -1deg);
-      }
+    &.n {
+      transform: rotate($baseRotationAngle);
+    }
 
-      $rotationDeg: $rotationDeg + $angle;
+    &.ne {
+      transform: rotate($baseRotationAngle + $angle);
+    }
+
+    &.e {
+      transform: rotate($baseRotationAngle + ($angle * 2));
+    }
+
+    &.se {
+      transform: rotate($baseRotationAngle + ($angle * 3));
+    }
+
+    &.s {
+      transform: rotate($baseRotationAngle + ($angle * 4));
+    }
+
+    &.sw {
+      transform: rotate($baseRotationAngle + ($angle * 5));
+    }
+
+    &.w {
+      transform: rotate($baseRotationAngle + ($angle * 6));
+    }
+
+    &.nw {
+      transform: rotate($baseRotationAngle + ($angle * 7));
     }
   }
 }
