@@ -32,18 +32,6 @@ $numberOfLeaves: 8;
   position: relative;
 }
 
-@keyframes activate {
-  0% {
-    content: url("../../assets/green-leaf.png");
-  }
-  25% {
-    content: url("../../assets/black-leaf.png");
-  }
-  // 100% {
-  //   content: url("../../assets/black-leaf.png");
-  // }
-}
-
 .leaf-node {
   height: 40%;
   display: block;
@@ -66,6 +54,19 @@ $numberOfLeaves: 8;
 }
 
 .leaf {
+  @mixin activate-leaf($duration, $delay) {
+    @keyframes leaf-frames {
+      0% {
+        content: url("../../assets/green-leaf.png");
+      }
+      25% {
+        content: url("../../assets/black-leaf.png");
+      }
+    }
+
+    animation: $duration leaf-frames infinite $delay * 1;
+  }
+
   $duration: 4s;
   $lDelay: $duration / $numberOfLeaves;
   $baseLeafRotationAngle: 11deg;
@@ -76,42 +77,42 @@ $numberOfLeaves: 8;
 
   &.n {
     transform: rotate($baseLeafRotationAngle);
-    animation: $duration activate infinite $lDelay;
+    @include activate-leaf($duration, 0s);
   }
 
   &.ne {
     transform: rotate($baseLeafRotationAngle + ($baseAngle * 1));
-    animation: $duration activate infinite ($lDelay * 2);
+    @include activate-leaf($duration, ($lDelay * 1));
   }
 
   &.e {
     transform: rotate($baseLeafRotationAngle + ($baseAngle * 2));
-    animation: $duration activate infinite ($lDelay * 3);
+    @include activate-leaf($duration, ($lDelay * 2));
   }
 
   &.se {
     transform: rotate($baseLeafRotationAngle + ($baseAngle * 3));
-    animation: $duration activate infinite ($lDelay * 4);
+    @include activate-leaf($duration, ($lDelay * 3));
   }
 
   &.s {
     transform: rotate($baseLeafRotationAngle + ($baseAngle * 4));
-    animation: $duration activate infinite ($lDelay * 5);
+    @include activate-leaf($duration, ($lDelay * 4));
   }
 
   &.sw {
     transform: rotate($baseLeafRotationAngle + ($baseAngle * 5));
-    animation: $duration activate infinite ($lDelay * 6);
+    @include activate-leaf($duration, ($lDelay * 5));
   }
 
   &.w {
     transform: rotate($baseLeafRotationAngle + ($baseAngle * 6));
-    animation: $duration activate infinite ($lDelay * 7);
+    @include activate-leaf($duration, ($lDelay * 6));
   }
 
   &.nw {
     transform: rotate($baseLeafRotationAngle + ($baseAngle * 7));
-    animation: $duration activate infinite ($lDelay * 8);
+    @include activate-leaf($duration, ($lDelay * 7));
   }
 }
 </style>
