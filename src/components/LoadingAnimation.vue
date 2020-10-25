@@ -21,9 +21,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$size: 200px;
+
 .leaf-container {
-  height: 300px;
-  width: 300px;
+  height: $size;
+  width: $size;
   border: 1px solid black;
   position: relative;
 }
