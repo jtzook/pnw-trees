@@ -22,19 +22,20 @@ export default {
 
 <style lang="scss" scoped>
 .leaf-container {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   border: 1px solid black;
+  position: relative;
 }
 
 .leaf-node {
+  height: 40%;
   display: block;
-  position: absolute;
-  top: 50%;
-  left: 47.25%;
-  height: 15%;
 
-  $angle: 45;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+
   $rotationDeg: 0;
 
   @for $i from 1 through 8 {
@@ -44,47 +45,48 @@ export default {
         rotate($rotationDeg * -1deg);
     }
 
-    $rotationDeg: $rotationDeg + $angle;
+    $rotationDeg: $rotationDeg + 45;
+  }
+}
+
+.leaf {
+  $angle: 45deg;
+  $baseRotationAngle: 11deg;
+
+  height: 100%;
+  transform: rotate(10deg);
+  content: url("../../assets/black-leaf.png");
+
+  &.n {
+    transform: rotate($baseRotationAngle);
   }
 
-  .leaf {
-    $baseRotationAngle: 11deg;
+  &.ne {
+    transform: rotate($baseRotationAngle + $angle);
+  }
 
-    height: 100%;
-    transform: rotate(10deg);
-    content: url("../../assets/black-leaf.png");
+  &.e {
+    transform: rotate($baseRotationAngle + ($angle * 2));
+  }
 
-    &.n {
-      transform: rotate($baseRotationAngle);
-    }
+  &.se {
+    transform: rotate($baseRotationAngle + ($angle * 3));
+  }
 
-    &.ne {
-      transform: rotate($baseRotationAngle + $angle);
-    }
+  &.s {
+    transform: rotate($baseRotationAngle + ($angle * 4));
+  }
 
-    &.e {
-      transform: rotate($baseRotationAngle + ($angle * 2));
-    }
+  &.sw {
+    transform: rotate($baseRotationAngle + ($angle * 5));
+  }
 
-    &.se {
-      transform: rotate($baseRotationAngle + ($angle * 3));
-    }
+  &.w {
+    transform: rotate($baseRotationAngle + ($angle * 6));
+  }
 
-    &.s {
-      transform: rotate($baseRotationAngle + ($angle * 4));
-    }
-
-    &.sw {
-      transform: rotate($baseRotationAngle + ($angle * 5));
-    }
-
-    &.w {
-      transform: rotate($baseRotationAngle + ($angle * 6));
-    }
-
-    &.nw {
-      transform: rotate($baseRotationAngle + ($angle * 7));
-    }
+  &.nw {
+    transform: rotate($baseRotationAngle + ($angle * 7));
   }
 }
 </style>
