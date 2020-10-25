@@ -59,6 +59,10 @@ $size: 200px;
   transform: rotate(10deg);
   content: url("../../assets/black-leaf.png");
 
+  &.active {
+    content: url("../../assets/green-leaf.png");
+  }
+
   &.n {
     transform: rotate($baseRotationAngle);
   }
