@@ -2,7 +2,7 @@
   <div id="app">
     <NavBar />
 
-    <div class="content d-flex text-center">
+    <div class="content d-flex justify-content-center">
       <LoadingAnimation class="align-self-center" />
       <!-- <div v-show="!loading" class="py-4">
         <CardView v-if="selectedView === 'card'" />

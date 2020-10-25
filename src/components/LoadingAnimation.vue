@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="leaf-container">
     <div
       v-for="direction in compassDirections"
       :key="direction"
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.leaf-container {
   height: 250px;
   width: 250px;
   border: 1px solid black;
@@ -30,9 +30,9 @@ export default {
 .leaf-node {
   display: block;
   position: absolute;
-  top: 50.5%;
+  top: 50%;
   left: 47.25%;
-  height: 100%;
+  height: 15%;
 
   $angle: 45;
   $rotationDeg: 0;
@@ -40,7 +40,7 @@ export default {
   @for $i from 1 through 8 {
     &:nth-of-type(#{$i}) {
       transform: rotate($rotationDeg * 1deg)
-        translate(5em)
+        translate(150%)
         rotate($rotationDeg * -1deg);
     }
 
@@ -50,7 +50,7 @@ export default {
   .leaf {
     $baseRotationAngle: 11deg;
 
-    height: 14%;
+    height: 100%;
     transform: rotate(10deg);
     content: url("../../assets/black-leaf.png");
 
