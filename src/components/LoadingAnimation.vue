@@ -22,6 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 $size: 200px;
+$baseAngle: 45;
 
 .leaf-container {
   height: $size;
@@ -38,22 +39,21 @@ $size: 200px;
   top: 30%;
   left: 40%;
 
-  $rotationDeg: 0;
+  $rotationAngle: 0;
 
   @for $i from 1 through 8 {
     &:nth-of-type(#{$i}) {
-      transform: rotate($rotationDeg * 1deg)
+      transform: rotate($rotationAngle * 1deg)
         translate(150%)
-        rotate($rotationDeg * -1deg);
+        rotate($rotationAngle * -1deg);
     }
 
-    $rotationDeg: $rotationDeg + 45;
+    $rotationAngle: $rotationAngle + $baseAngle;
   }
 }
 
 .leaf {
-  $angle: 45deg;
-  $baseRotationAngle: 11deg;
+  $baseLeafRotationAngle: 11deg;
 
   height: 100%;
   transform: rotate(10deg);
@@ -64,35 +64,35 @@ $size: 200px;
   }
 
   &.n {
-    transform: rotate($baseRotationAngle);
+    transform: rotate($baseLeafRotationAngle);
   }
 
   &.ne {
-    transform: rotate($baseRotationAngle + $angle);
+    transform: rotate($baseLeafRotationAngle + $baseAngle);
   }
 
   &.e {
-    transform: rotate($baseRotationAngle + ($angle * 2));
+    transform: rotate($baseLeafRotationAngle + ($baseAngle * 2));
   }
 
   &.se {
-    transform: rotate($baseRotationAngle + ($angle * 3));
+    transform: rotate($baseLeafRotationAngle + ($baseAngle * 3));
   }
 
   &.s {
-    transform: rotate($baseRotationAngle + ($angle * 4));
+    transform: rotate($baseLeafRotationAngle + ($baseAngle * 4));
   }
 
   &.sw {
-    transform: rotate($baseRotationAngle + ($angle * 5));
+    transform: rotate($baseLeafRotationAngle + ($baseAngle * 5));
   }
 
   &.w {
-    transform: rotate($baseRotationAngle + ($angle * 6));
+    transform: rotate($baseLeafRotationAngle + ($baseAngle * 6));
   }
 
   &.nw {
-    transform: rotate($baseRotationAngle + ($angle * 7));
+    transform: rotate($baseLeafRotationAngle + ($baseAngle * 7));
   }
 }
 </style>
