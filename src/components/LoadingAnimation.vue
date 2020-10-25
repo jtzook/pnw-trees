@@ -25,9 +25,9 @@
     @for $i from 1 through $numLeaves {
       &:nth-of-type(#{$i}) {
         transform: rotate($rotationDeg * 1deg)
-          translate(8.5em)
+          translate(8em)
           rotate($rotationDeg * -1deg)
-          rotate(($angle * $i) * 1deg + 10deg)
+          rotate(($angle * $i) * 1deg + 11deg)
           rotate(405deg);
       }
 
