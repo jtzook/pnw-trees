@@ -3,11 +3,15 @@
     <NavBar />
 
     <div class="content d-flex justify-content-center">
-      <LoadingAnimation class="align-self-center" />
-      <!-- <div v-show="!loading" class="py-4">
-        <CardView v-if="selectedView === 'card'" />
-        <TableView v-else />
-      </div> -->
+      <b-overlay :show="loading">
+        <b-row class="py-4">
+          <CardView v-if="selectedView === 'card'" />
+          <TableView v-else />
+        </b-row>
+        <template #overlay>
+          <LoadingAnimation class="align-self-center" />
+        </template>
+      </b-overlay>
     </div>
   </div>
 </template>
