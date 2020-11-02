@@ -1,7 +1,6 @@
 export default {
   FETCH_TREES(state) {
     state.loading = true;
-    state.trees = [];
     state.selectedSort = "";
     state.selectedFilter = "";
     state.fetchError = null;

@@ -28,7 +28,6 @@ $numberOfLeaves: 8;
 .leaf-container {
   height: $size;
   width: $size;
-  border: 1px solid black;
   position: relative;
 }
 

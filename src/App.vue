@@ -3,7 +3,7 @@
     <NavBar />
 
     <div class="content d-flex justify-content-center">
-      <b-overlay :show="loading">
+      <b-overlay :show="loading" :opacity="0.75" blur="1px">
         <b-row class="py-4">
           <CardView v-if="selectedView === 'card'" />
           <TableView v-else />

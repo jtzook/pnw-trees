@@ -7,7 +7,7 @@ import config from "../../config/config";
 export default {
   fetchTrees: async ({ state, commit }) => {
     commit("FETCH_TREES");
-
+    
     try {
       // https://www.flickr.com/services/api/flickr.photos.search.html
 
@@ -79,7 +79,10 @@ export default {
         });
       }
 
-      commit("FETCH_TREES_SUCCESS", trees);
+      // TODO: remove timeout
+      setTimeout(() => {
+        commit("FETCH_TREES_SUCCESS", trees);
+      }, 3000);
     } catch (e) {
       commit("FETCH_TREES_FAILURE", e);
     }
