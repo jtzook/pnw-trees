@@ -74,11 +74,11 @@ $numberOfLeaves: 8;
 
     animation-name: fill-leaf, empty-leaf;
     animation-fill-mode: forwards;
-    animation-duration: 1ms, $duration;
+    animation-duration: $duration;
     animation-direction: alternate;
     animation-delay: $delay, $duration + $delay;
-    animation-iteration-count: 1, infinite;
-    animation-timing-function: cubic-bezier(0, 0, 0.75, 1);
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0, 0, 1, 1);
   }
 
   $duration: 1.5s;
