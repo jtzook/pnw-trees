@@ -29,13 +29,10 @@ export default {
         "title",
         {
           key: "timeStamp",
-          label: "Timestamp",
+          label: "Date",
           formatter: value => {
-            return new Date(value).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric"
-            });
+            console.log(value, typeof value);
+            return new Date(value).toLocaleDateString("en-US");
           }
         },
         "tag",

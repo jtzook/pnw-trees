@@ -11,7 +11,7 @@
     </b-card-title>
     <b-card-text class="text-left">
       <p v-if="tree.timeStamp">
-        <strong>Timestamp</strong>
+        <strong>Date</strong>
         <br />
         {{ formattedTimestamp }}
       </p>
@@ -73,11 +73,7 @@ export default {
     },
 
     formattedTimestamp() {
-      return new Date(this.tree.timeStamp).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      });
+      return new Date(this.tree.timeStamp).toLocaleDateString("en-US");
     }
   },
 
