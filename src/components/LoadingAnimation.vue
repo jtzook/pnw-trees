@@ -78,7 +78,7 @@ $numberOfLeaves: 8;
     animation-direction: alternate;
     animation-delay: $delay, $duration + $delay;
     animation-iteration-count: infinite;
-    animation-timing-function: cubic-bezier(0, 0, 1, 1);
+    animation-timing-function: linear;
   }
 
   $duration: 1.5s;
