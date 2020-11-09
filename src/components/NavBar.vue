@@ -1,37 +1,39 @@
 <template>
   <div class="tree-nav">
-    <b-navbar type="dark" variant="dark" style="height: 60px">
+    <b-navbar type="dark" variant="dark" style="height: 45px">
       <b-navbar-brand>PNW trees</b-navbar-brand>
       <b-navbar-nav class="ml-auto">
-        <b-button-group>
-          <b-button
-            class="my-2 my-sm-0"
-            variant="info"
-            :pressed="selectedView === 'card'"
-            @click="changeView('card')"
-            >Cards</b-button
-          >
-          <b-button
-            class="my-2 my-sm-0"
-            variant="info"
-            :pressed="selectedView === 'table'"
-            @click="changeView('table')"
-            >Table</b-button
-          >
-        </b-button-group>
         <b-button
           @click="fetchTrees"
           variant="outline-info"
+          size="sm"
           :style="refetchButton"
         >
           <BIconArrowClockwise v-if="loading" rotate="315" animation="spin" />
-          <BIconArrowClockwise v-else rotate="315" />
+          <span v-else>Fetch Trees</span>
         </b-button>
       </b-navbar-nav>
     </b-navbar>
 
-    <b-navbar type="dark" variant="info" style="height: 40px">
-      <span>{{ selectedView }} view</span>
+    <b-navbar type="dark" variant="info" style="height: 31px">
+      <b-button-group size="sm">
+        <b-button
+          class="my-2 my-sm-0 no-shadow"
+          variant="info"
+          squared
+          :pressed="selectedView === 'card'"
+          @click="changeView('card')"
+          >Cards</b-button
+        >
+        <b-button
+          class="my-2 my-sm-0 no-shadow"
+          variant="info"
+          squared
+          :pressed="selectedView === 'table'"
+          @click="changeView('table')"
+          >Table</b-button
+        >
+      </b-button-group>
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown text="Sort" right>
           <b-dropdown-item
@@ -67,11 +69,9 @@ export default {
   data() {
     return {
       refetchButton: {
-        width: "38px",
+        width: "90px",
         display: "flex",
-        padding: "8.5px 0 0",
-        "justify-content": "center",
-        "margin-left": "10px"
+        "justify-content": "center"
       }
     };
   },
@@ -103,5 +103,9 @@ export default {
   position: sticky;
   top: 0;
   z-index: 3000;
+}
+
+.no-shadow {
+  box-shadow: none !important;
 }
 </style>
