@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <b-navbar fixed type="dark" variant="dark" style="height: 60px">
+  <div class="tree-nav">
+    <b-navbar type="dark" variant="dark" style="height: 60px">
       <b-navbar-brand>PNW trees</b-navbar-brand>
       <b-navbar-nav class="ml-auto">
         <b-button-group>
@@ -29,7 +29,8 @@
         </b-button>
       </b-navbar-nav>
     </b-navbar>
-    <b-navbar fixed type="dark" variant="info" style="height: 40px">
+
+    <b-navbar type="dark" variant="info" style="height: 40px">
       <span>{{ selectedView }} view</span>
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown text="Sort" right>
@@ -96,3 +97,11 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.tree-nav {
+  position: sticky;
+  top: 0;
+  z-index: 3000;
+}
+</style>
