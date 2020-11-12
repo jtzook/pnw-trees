@@ -3,12 +3,15 @@
     <b-col cols="10">
       <b-table
         hover
-        outlined
-        stacked="md"
         :items="selectedTrees"
         :fields="fields"
         head-variant="dark"
-      ></b-table>
+        stacked="md"
+      >
+        <template #cell(tag)="data">
+          <TreeTag :tag="data.value" />
+        </template>
+      </b-table>
       <br />
     </b-col>
   </b-row>
@@ -16,9 +19,14 @@
 
 <script>
 import { mapState, mapGetters } from "vuex";
+import TreeTag from "./TreeTag";
 
 export default {
   name: "TableView",
+
+  components: {
+    TreeTag
+  },
 
   data() {
     return {
