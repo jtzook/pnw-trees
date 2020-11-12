@@ -27,12 +27,7 @@
       </p>
     </b-card-text>
     <template slot="footer">
-      <div
-        class="tree-tag"
-        :style="{ 'background-color': tagColorMap[tree.tag] }"
-      >
-        {{ tree.tag }}
-      </div>
+      <TreeTag :tag="tree.tag" />
     </template>
   </b-card>
 </template>
@@ -40,9 +35,14 @@
 <script>
 import { startCase } from "lodash";
 import { mapGetters } from "vuex";
+import TreeTag from "./TreeTag";
 
 export default {
   name: "TreeCard",
+
+  components: {
+    TreeTag
+  },
 
   props: {
     /**
