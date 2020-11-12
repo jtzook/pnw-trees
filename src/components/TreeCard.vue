@@ -1,6 +1,7 @@
 <template>
   <b-card
     class="tree-card"
+    footer-class="d-flex justify-content-center"
     :img-src="tree.imgUrl"
     img-height="200px"
     img-alt="Tree Image"

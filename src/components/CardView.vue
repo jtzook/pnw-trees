@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <b-row class="justify-content-center">
-      <b-col cols="10">
-        <b-card-group columns>
-          <TreeCard v-for="tree in selectedTrees" :key="tree.id" :tree="tree" />
-        </b-card-group>
-      </b-col>
-    </b-row>
-  </div>
+  <b-row class="justify-content-center" no-gutters>
+    <b-col cols="10">
+      <b-card-group columns>
+        <TreeCard v-for="tree in selectedTrees" :key="tree.id" :tree="tree" />
+      </b-card-group>
+    </b-col>
+  </b-row>
 </template>
 
 <script>

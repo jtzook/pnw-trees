@@ -4,6 +4,7 @@
 
     <div
       :class="[
+        'py-4',
         'content',
         'd-flex',
         'justify-content-center',
@@ -11,10 +12,8 @@
       ]"
     >
       <b-overlay :show="loading" :opacity="0.75" blur="1px">
-        <b-row class="py-4">
-          <CardView v-if="selectedView === 'card'" />
-          <TableView v-else />
-        </b-row>
+        <CardView v-if="selectedView === 'card'" />
+        <TableView v-else />
         <template #overlay>
           <LoadingAnimation class="align-self-center" />
         </template>
@@ -64,7 +63,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   height: 100vh;
 }

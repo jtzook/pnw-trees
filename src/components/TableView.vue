@@ -1,19 +1,17 @@
 <template>
-  <div>
-    <b-row class="justify-content-center">
-      <b-col cols="10">
-        <b-table
-          hover
-          outlined
-          stacked="md"
-          :items="selectedTrees"
-          :fields="fields"
-          head-variant="dark"
-        ></b-table>
-        <br />
-      </b-col>
-    </b-row>
-  </div>
+  <b-row class="justify-content-center" no-gutters>
+    <b-col cols="10">
+      <b-table
+        hover
+        outlined
+        stacked="md"
+        :items="selectedTrees"
+        :fields="fields"
+        head-variant="dark"
+      ></b-table>
+      <br />
+    </b-col>
+  </b-row>
 </template>
 
 <script>
