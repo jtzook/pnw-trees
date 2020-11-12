@@ -2,7 +2,14 @@
   <div id="app">
     <NavBar />
 
-    <div class="content d-flex justify-content-center">
+    <div
+      :class="[
+        'content',
+        'd-flex',
+        'justify-content-center',
+        { loading: loading }
+      ]"
+    >
       <b-overlay :show="loading" :opacity="0.75" blur="1px">
         <b-row class="py-4">
           <CardView v-if="selectedView === 'card'" />
@@ -82,6 +89,11 @@ export default {
 }
 
 .content {
-  height: calc(100% - 100px);
+  // subtracting height of navbars
+  height: calc(100% - 76px);
+
+  &.loading {
+    overflow: hidden;
+  }
 }
 </style>
