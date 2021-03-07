@@ -20,7 +20,7 @@ export default {
   tagColorMap: (state, getters) => {
     const map = {};
 
-    getters?.treeTypes?.forEach((tag, index) => {
+    getters?.treeTags?.forEach((tag, index) => {
       map[tag] = state.colorPalette[index % state.colorPalette.length];
     });
 
