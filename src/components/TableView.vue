@@ -50,7 +50,7 @@ export default {
   computed: {
     ...mapState(["treeTypes"]),
 
-    ...mapGetters(["treeTags", "selectedTrees"])
+    ...mapGetters(["treeTypes", "selectedTrees"])
   }
 };
 </script>

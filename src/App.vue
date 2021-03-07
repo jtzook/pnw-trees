@@ -45,7 +45,7 @@ export default {
   computed: {
     ...mapState(["selectedView", "loading"]),
 
-    ...mapGetters(["treeTags"])
+    ...mapGetters(["treeTypes"])
   },
 
   methods: {

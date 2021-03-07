@@ -77,11 +77,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["treeTags"]),
+    ...mapGetters(["treeTypes"]),
     ...mapState(["treeTypes", "selectedView", "sortingOptions", "loading"]),
 
     filterOptions() {
-      return ["All", ...this.treeTags];
+      return ["All", ...this.treeTypes];
     }
   },
 
