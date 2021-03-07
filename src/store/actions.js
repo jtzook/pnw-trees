@@ -7,11 +7,11 @@ import config from "../../config/config";
 export default {
   fetchTrees: async ({ state, commit }) => {
     commit("FETCH_TREES");
-    
+
     try {
       // https://www.flickr.com/services/api/flickr.photos.search.html
 
-      const shuffle = (a) => {
+      const shuffle = a => {
         for (let i = a.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [a[i], a[j]] = [a[j], a[i]];
@@ -19,11 +19,11 @@ export default {
         return a;
       };
 
-      const shuffledTrees = shuffle(state.treeTypes);
+      const shuffledTrees = shuffle(state.treeTags);
 
       const promises = [];
 
-      shuffledTrees.map((tree) =>
+      shuffledTrees.map(tree =>
         promises.push(
           axios({
             method: "get",
@@ -45,8 +45,8 @@ export default {
               // seattle-ish
               lat: 47.000499,
               long: -122.003108,
-              radius: 200, // miles
-            },
+              radius: 200 // miles
+            }
           })
         )
       );
@@ -61,17 +61,18 @@ export default {
           const photoArray = get(result, "data.photos.photo", []);
 
           if (photoArray.length) {
-            photoArray.map((p) => {
+            photoArray.map(p => {
               if (!treeIds.includes(p.id)) {
                 treeIds.push(p.id);
 
                 trees.push({
-                  name: state.treeTypes[index].name,
-                  tag: state.treeTypes[index].tag,
+                  id: p.id,
+                  name: state.treeTags[index].name,
+                  tag: state.treeTags[index].tag,
                   title: p.title,
-                  extraTags: p.tags,
+                  userTags: p.tags,
                   timeStamp: p.datetaken,
-                  imgUrl: p.url_n,
+                  imgUrl: p.url_n
                 });
               }
             });
@@ -96,5 +97,5 @@ export default {
 
   sortDisplayRows: ({ commit }, selection) => {
     commit("SET_SORT", selection);
-  },
+  }
 };

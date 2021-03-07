@@ -21,7 +21,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["treeTypes"]),
+    ...mapState(["treeTags"]),
 
     ...mapGetters(["selectedTrees"])
   }

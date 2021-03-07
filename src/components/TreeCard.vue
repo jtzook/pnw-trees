@@ -21,11 +21,6 @@
         <br />
         {{ tree.title }}
       </p>
-      <p v-if="tree.extraTags">
-        <strong>User Tags</strong>
-        <br />
-        {{ initialTags }}
-      </p>
     </b-card-text>
     <template slot="footer">
       <TreeTag :tag="tree.tag" />
@@ -46,9 +41,6 @@ export default {
   },
 
   props: {
-    /**
-     * Tree data
-     */
     tree: {
       type: Object,
       required: true
@@ -57,21 +49,6 @@ export default {
 
   computed: {
     ...mapGetters(["tagColorMap"]),
-
-    initialTags() {
-      let tagLimit = 7;
-      let userTags = [];
-
-      if (this.tree.extraTags) {
-        userTags = this.tree.extraTags.split(" ");
-
-        if (userTags.length > tagLimit) {
-          userTags = userTags.slice(0, tagLimit);
-        }
-      }
-
-      return userTags ? userTags.join(" ") : [];
-    },
 
     formattedTimestamp() {
       return new Date(this.tree.timeStamp).toLocaleDateString("en-US");

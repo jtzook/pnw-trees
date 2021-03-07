@@ -13,8 +13,8 @@ export default {
       : filteredTrees;
   },
 
-  treeTypes: state => {
-    return [...new Set(state.treeTypes.map(t => t.tag))];
+  treeTags: state => {
+    return [...new Set(state.treeTags.map(t => t.tag))];
   },
 
   tagColorMap: (state, getters) => {
@@ -25,5 +25,12 @@ export default {
     });
 
     return map;
-  }
+  },
+
+  userTags: state =>
+    state.trees.reduce((acc, cur) => {
+      acc[cur.id] = cur.userTags.split(" ");
+
+      return acc;
+    }, {})
 };

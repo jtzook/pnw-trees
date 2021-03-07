@@ -42,15 +42,15 @@ export default {
           }
         },
         "tag",
-        "extraTags"
+        "userTags"
       ]
     };
   },
 
   computed: {
-    ...mapState(["treeTypes"]),
+    ...mapState(["treeTags"]),
 
-    ...mapGetters(["treeTypes", "selectedTrees"])
+    ...mapGetters(["treeTags", "selectedTrees"])
   }
 };
 </script>
