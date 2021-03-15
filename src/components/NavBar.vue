@@ -1,13 +1,13 @@
 <template>
   <div class="tree-nav">
-    <b-navbar type="dark" variant="dark" style="height: 45px">
+    <b-navbar class="navbar" type="dark" variant="dark">
       <b-navbar-brand>PNW trees</b-navbar-brand>
       <b-navbar-nav class="ml-auto">
         <b-button
-          @click="fetchTrees"
-          variant="outline-info"
+          class="refetch-btn"
+          :style="refetchButtonStyle"
           size="sm"
-          :style="refetchButton"
+          @click="fetchTrees"
         >
           <BIconArrowClockwise v-if="loading" rotate="315" animation="spin" />
           <span v-else>Fetch Trees</span>
@@ -68,20 +68,31 @@ export default {
 
   data() {
     return {
-      refetchButton: {
-        width: "90px",
-        display: "flex",
-        "justify-content": "center"
-      }
+      buttonColor: "#448b27"
     };
   },
 
   computed: {
     ...mapGetters(["treeTags"]),
-    ...mapState(["treeTags", "selectedView", "sortingOptions", "loading"]),
+    ...mapState([
+      "colors",
+      "treeTags",
+      "selectedView",
+      "sortingOptions",
+      "loading"
+    ]),
 
     filterOptions() {
       return ["All", ...this.treeTags];
+    },
+
+    refetchButtonStyle() {
+      const hex = this.colors.primary.forest;
+
+      return {
+        "background-color": hex,
+        borderColor: hex
+      };
     }
   },
 
@@ -105,7 +116,15 @@ export default {
   z-index: 3000;
 }
 
+.navbar {
+  height: 45px;
+}
+
 .no-shadow {
   box-shadow: none !important;
+}
+
+.refetch-btn {
+  width: 90px;
 }
 </style>
