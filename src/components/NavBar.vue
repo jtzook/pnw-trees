@@ -15,7 +15,7 @@
       </b-navbar-nav>
     </b-navbar>
 
-    <b-navbar type="dark" variant="info" style="height: 31px">
+    <b-navbar class="subnav" :style="subNavStyle">
       <b-button-group size="sm">
         <b-button
           class="my-2 my-sm-0 no-shadow"
@@ -93,6 +93,15 @@ export default {
         "background-color": hex,
         borderColor: hex
       };
+    },
+
+    subNavStyle() {
+      const hex = this.colors.primary.forest;
+
+      return {
+        "background-color": hex,
+        borderColor: hex
+      };
     }
   },
 
@@ -118,6 +127,10 @@ export default {
 
 .navbar {
   height: 45px;
+}
+
+.subnav {
+  height: 31px;
 }
 
 .no-shadow {
