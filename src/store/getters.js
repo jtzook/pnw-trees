@@ -18,13 +18,14 @@ export default {
   },
 
   tagColorMap: (state, getters) => {
-    const map = {};
+    const tags = getters.treeTags;
+    const hexVals = Object.values(state.colors.primary);
 
-    getters?.treeTags?.forEach((tag, index) => {
-      map[tag] = state.colorPalette[index % state.colorPalette.length];
-    });
+    return tags.reduce((acc, tag, idx) => {
+      acc[tag] = hexVals[idx % hexVals.length];
 
-    return map;
+      return acc;
+    }, {});
   },
 
   userTags: state =>

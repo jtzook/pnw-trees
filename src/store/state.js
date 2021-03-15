@@ -1,12 +1,14 @@
 export default {
-  colorPalette: [
-    "#448b27",
-    "#ace600",
-    "#ac5839",
-    "#e03838",
-    "#ff6a1a",
-    "#fbc337"
-  ],
+  colors: {
+    primary: {
+      forest: "#448b27",
+      lime: "ace600",
+      brown: "#ac5839",
+      red: "#e03838",
+      orange: "#ff6a1a",
+      yellow: "#fbc337"
+    }
+  },
 
   trees: [],
 
