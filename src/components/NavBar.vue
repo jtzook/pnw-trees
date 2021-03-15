@@ -5,7 +5,7 @@
       <b-navbar-nav class="ml-auto">
         <b-button
           class="refetch-btn"
-          :style="refetchButtonStyle"
+          :style="[buttonStyle]"
           size="sm"
           @click="fetchTrees"
         >
@@ -15,20 +15,21 @@
       </b-navbar-nav>
     </b-navbar>
 
-    <b-navbar class="subnav" :style="subNavStyle">
+    <b-navbar class="subnav" :style="buttonStyle">
       <b-button-group size="sm">
         <b-button
           class="my-2 my-sm-0 no-shadow"
-          variant="info"
-          squared
+          :style="[buttonStyle]"
+          size="sm"
+          variant="outline-info"
           :pressed="selectedView === 'card'"
           @click="changeView('card')"
           >Cards</b-button
         >
         <b-button
           class="my-2 my-sm-0 no-shadow"
-          variant="info"
-          squared
+          :style="[buttonStyle]"
+          size="sm"
           :pressed="selectedView === 'table'"
           @click="changeView('table')"
           >Table</b-button
@@ -86,12 +87,13 @@ export default {
       return ["All", ...this.treeTags];
     },
 
-    refetchButtonStyle() {
+    buttonStyle() {
       const hex = this.colors.primary.forest;
 
       return {
         "background-color": hex,
-        borderColor: hex
+        borderColor: hex,
+        color: "white"
       };
     },
 
