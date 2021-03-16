@@ -1,4 +1,8 @@
-module.exports = {
+export default {
+  plugins: [
+    "~/directives/animateOnScroll.client.js",
+    "~/directives/lazyLoad.client.js"
+  ],
   pluginOptions: {
     "style-resources-loader": {
       preProcessor: "scss",

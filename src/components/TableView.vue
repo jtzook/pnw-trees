@@ -36,10 +36,7 @@ export default {
         {
           key: "timeStamp",
           label: "Date",
-          formatter: value => {
-            console.log(value, typeof value);
-            return new Date(value).toLocaleDateString("en-US");
-          }
+          formatter: value => new Date(value).toLocaleDateString("en-US")
         },
         "tag",
         "userTags"
