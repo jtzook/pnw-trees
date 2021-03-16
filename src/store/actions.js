@@ -19,7 +19,7 @@ export default {
         return a;
       };
 
-      const shuffledTrees = shuffle(state.treeTags);
+      const shuffledTrees = shuffle(state.treeTagMap);
 
       const promises = [];
 
@@ -67,8 +67,8 @@ export default {
 
                 trees.push({
                   id: p.id,
-                  name: state.treeTags[index].name,
-                  tag: state.treeTags[index].tag,
+                  name: state.treeTagMap[index].name,
+                  tag: state.treeTagMap[index].tag,
                   title: p.title,
                   userTags: p.tags,
                   timeStamp: p.datetaken,

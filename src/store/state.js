@@ -2,7 +2,7 @@ export default {
   colors: {
     primary: {
       forest: "#448b27",
-      lime: "ace600",
+      lime: "#ace600",
       brown: "#ac5839",
       red: "#e03838",
       orange: "#ff6a1a",
@@ -13,7 +13,7 @@ export default {
   trees: [],
 
   // https://www.arcgis.com/apps/MapJournal/index.html
-  treeTags: [
+  treeTagMap: [
     { name: "vine maple", tag: "maple" },
     { name: "japanese maple", tag: "maple" },
     { name: "bigleaf maple", tag: "maple" },

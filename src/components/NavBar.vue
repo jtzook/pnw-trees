@@ -16,6 +16,7 @@
     </b-navbar>
 
     <b-navbar class="subnav" type="dark" :style="buttonStyle">
+      <!-- Navigation -->
       <b-button
         :class="['subnav-btn', { 'font-weight-bold': cardView }]"
         :style="buttonStyle"
@@ -30,6 +31,8 @@
         @click="changeView('table')"
         >Table</b-button
       >
+
+      <!-- Sorting / Filtering -->
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown text="Sort" right>
           <b-dropdown-item
@@ -72,7 +75,7 @@ export default {
     ...mapGetters(["treeTags"]),
     ...mapState([
       "colors",
-      "treeTags",
+      "treeTagMap",
       "selectedView",
       "sortingOptions",
       "loading"

@@ -2,11 +2,12 @@
   <b-row class="justify-content-center" no-gutters>
     <b-col cols="10">
       <b-table
-        hover
         :items="selectedTrees"
         :fields="fields"
         head-variant="dark"
         stacked="md"
+        small
+        hover
       >
         <template #cell(tag)="data">
           <TreeTag :tag="data.value" />
@@ -45,7 +46,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["treeTags"]),
+    ...mapState(["treeTagMap"]),
 
     ...mapGetters(["treeTags", "selectedTrees"])
   }
