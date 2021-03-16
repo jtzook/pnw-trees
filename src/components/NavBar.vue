@@ -5,7 +5,7 @@
       <b-navbar-nav class="ml-auto">
         <b-button
           class="refetch-btn"
-          :style="[buttonStyle]"
+          :style="buttonStyle"
           size="sm"
           @click="fetchTrees"
         >
@@ -15,28 +15,17 @@
       </b-navbar-nav>
     </b-navbar>
 
-    <b-navbar class="subnav" :style="[buttonStyle]">
+    <b-navbar class="subnav" type="dark" :style="buttonStyle">
       <b-button
-        :class="[
-          'my-2',
-          'my-sm-0',
-          'no-shadow',
-          { 'font-weight-bold': cardView }
-        ]"
-        :style="[buttonStyle]"
+        :class="['subnav-btn', { 'font-weight-bold': cardView }]"
+        :style="buttonStyle"
         size="sm"
-        variant="outline-info"
         @click="changeView('card')"
         >Cards</b-button
       >
       <b-button
-        :class="[
-          'my-2',
-          'my-sm-0',
-          'no-shadow',
-          { 'font-weight-bold': tableView }
-        ]"
-        :style="[buttonStyle]"
+        :class="['subnav-btn', { 'font-weight-bold': tableView }]"
+        :style="buttonStyle"
         size="sm"
         @click="changeView('table')"
         >Table</b-button
@@ -96,11 +85,11 @@ export default {
     buttonStyle() {
       const hex = this.colors.primary.forest;
 
-      return {
-        "background-color": hex,
-        borderColor: hex,
-        color: "white"
-      };
+      return [
+        { "background-color": hex },
+        { borderColor: hex },
+        { color: "white" }
+      ];
     },
 
     subNavStyle() {
@@ -155,5 +144,11 @@ export default {
 
 .refetch-btn {
   width: 90px;
+}
+</style>
+
+<style lang="postcss" scoped>
+.subnav-btn {
+  @apply my-2 my-sm-0 no-shadow;
 }
 </style>
