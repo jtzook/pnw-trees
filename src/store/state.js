@@ -23,13 +23,15 @@ export default {
     { name: "noble fir", tag: "fir" },
     { name: "subalpine fir", tag: "fir" },
     { name: "pacific silver fir", tag: "fir" },
-    { name: "red alder", tag: "alder" },
-    { name: "pacific madrone", tag: "madrone" },
+    // { name: "red alder", tag: "alder" },
+    // { name: "pacific madrone", tag: "madrone" },
     { name: "water birch", tag: "birch" },
     { name: "paper birch", tag: "birch" },
     { name: "yellow cedar", tag: "cedar" },
     { name: "incense cedar", tag: "cedar" },
-    { name: "mountain mahogany", tag: "mahogany" }
+    // { name: "mountain mahogany", tag: "mahogany" }
+    { name: "", tag: "spruce" },
+    { name: "", tag: "pine" }
   ],
 
   selectedView: "card",
