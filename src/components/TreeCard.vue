@@ -8,18 +8,14 @@
     img-top
   >
     <b-card-title>
-      <div class="tree-card-title">{{ startCase(tree.name) }}</div>
+      <div class="tree-card-title">{{ tree.title }}</div>
     </b-card-title>
+
     <b-card-text class="text-left">
       <p v-if="tree.timeStamp">
         <strong>Date</strong>
         <br />
         {{ formattedTimestamp }}
-      </p>
-      <p v-if="tree.title">
-        <strong>User Title</strong>
-        <br />
-        {{ tree.title }}
       </p>
     </b-card-text>
     <template slot="footer">

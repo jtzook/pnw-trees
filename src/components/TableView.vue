@@ -46,7 +46,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["treeTagMap"]),
+    ...mapState(["treeTagMappings"]),
 
     ...mapGetters(["treeTags", "selectedTrees"])
   }

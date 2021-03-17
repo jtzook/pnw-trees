@@ -13,7 +13,7 @@ export default {
       : filteredTrees;
   },
 
-  treeTags: state => [...new Set(state.treeTagMap.map(t => t.tag))],
+  treeTags: state => [...new Set(state.treeTagMappings.map(t => t.tag))],
 
   tagColorMap: (state, getters) => {
     const tags = getters.treeTags;

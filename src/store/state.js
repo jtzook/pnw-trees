@@ -13,7 +13,7 @@ export default {
   trees: [],
 
   // https://www.arcgis.com/apps/MapJournal/index.html
-  treeTagMap: [
+  treeTagMappings: [
     { name: "vine maple", tag: "maple" },
     { name: "japanese maple", tag: "maple" },
     { name: "bigleaf maple", tag: "maple" },

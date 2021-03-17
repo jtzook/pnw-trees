@@ -75,7 +75,7 @@ export default {
     ...mapGetters(["treeTags"]),
     ...mapState([
       "colors",
-      "treeTagMap",
+      "treeTagMappings",
       "selectedView",
       "sortingOptions",
       "loading"

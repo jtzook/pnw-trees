@@ -5,25 +5,19 @@ import { get } from "lodash";
 import config from "../../config/config";
 
 export default {
-  fetchTrees: async ({ state, commit }) => {
+  fetchTrees: async ({ state, getters, commit }) => {
     commit("FETCH_TREES");
 
     try {
       // https://www.flickr.com/services/api/flickr.photos.search.html
 
-      const shuffle = a => {
-        for (let i = a.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [a[i], a[j]] = [a[j], a[i]];
-        }
-        return a;
-      };
-
-      const shuffledTrees = shuffle(state.treeTagMap);
+      const treesByTag = getters.treeTags.map(tag =>
+        state.treeTagMappings.filter(v => v.tag === tag)
+      );
 
       const promises = [];
 
-      shuffledTrees.map(tree =>
+      treesByTag.map(treeTagData =>
         promises.push(
           axios({
             method: "get",
@@ -31,21 +25,20 @@ export default {
             params: {
               method: "flickr.photos.search",
               api_key: config.api_key,
-              tags: `${tree.tag} tree`,
-              extras: "url_n, date_taken, tags",
+              tags: [treeTagData[0].tag, "tree"],
+              text: treeTagData[0].tag,
               page: 1,
-              per_page: 5,
-              format: "json",
-              nojsoncallback: 1,
-              safe_search: true,
+              per_page: 3,
               sort: "relevance",
-              min_taken_date: new Date("2000-01-01"),
               content_type: 1, // photos only
               geo_context: 2, // outdoors
               // seattle-ish
               lat: 47.000499,
               long: -122.003108,
-              radius: 200 // miles
+              radius: 500, // miles
+              format: "json",
+              nojsoncallback: 1,
+              extras: "url_n, date_taken, tags, description"
             }
           })
         )
@@ -54,31 +47,33 @@ export default {
       const results = await Promise.all(promises);
 
       const trees = [];
-      const treeIds = [];
 
-      if (results) {
-        results.map((result, index) => {
-          const photoArray = get(result, "data.photos.photo", []);
+      results.map((result, index) => {
+        const photoArray = get(result, "data.photos.photo", []);
 
-          if (photoArray.length) {
-            photoArray.map(p => {
-              if (!treeIds.includes(p.id)) {
-                treeIds.push(p.id);
+        if (photoArray.length) {
+          photoArray.map(p => {
+            const treeIds = trees.map(t => t.id);
 
-                trees.push({
-                  id: p.id,
-                  name: state.treeTagMap[index].name,
-                  tag: state.treeTagMap[index].tag,
-                  title: p.title,
-                  userTags: p.tags,
-                  timeStamp: p.datetaken,
-                  imgUrl: p.url_n
-                });
-              }
-            });
-          }
-        });
-      }
+            if (p?.id && !treeIds.includes(p.id)) {
+              const matchingTags = p.tags
+                .split(" ")
+                .filter(t => getters.treeTags.includes(t));
+
+              trees.push({
+                id: p.id,
+                tag: matchingTags.length
+                  ? matchingTags[0]
+                  : state.treeTagMappings[index].tag,
+                title: p.title,
+                userTags: p.tags,
+                timeStamp: p.datetaken,
+                imgUrl: p.url_n
+              });
+            }
+          });
+        }
+      });
 
       // TODO: remove timeout
       setTimeout(() => {
