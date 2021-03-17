@@ -41,49 +41,18 @@ export default {
     LoadingAnimation
   },
 
-  data() {
-    return {
-      lazyLoadFetches: 1
-    };
-  },
-
   computed: {
-    ...mapState(["trees", "selectedView", "loading", "apiPageNumber"]),
+    ...mapState(["trees", "selectedView", "loading"]),
 
     ...mapGetters(["treeTags"])
   },
 
   methods: {
-    ...mapActions(["fetchTrees"]),
-
-    onScroll({
-      target: {
-        scrollingElement: { scrollTop, clientHeight, scrollHeight }
-      }
-    }) {
-      const preemptionValue = 500;
-
-      // hitting the bottom of the page
-      if (scrollTop + clientHeight + preemptionValue >= scrollHeight) {
-        this.lazyLoadFetches += 1;
-
-        if (!this.loading) {
-          this.fetchTrees(this.lazyLoadFetches);
-        }
-      }
-    }
+    ...mapActions(["fetchTrees"])
   },
 
   created() {
     this.fetchTrees();
-  },
-
-  mounted() {
-    window.addEventListener("scroll", this.onScroll);
-  },
-
-  destroyed() {
-    window.removeEventListener("scroll", this.onScroll);
   }
 };
 </script>

@@ -32,7 +32,6 @@ export default {
   data() {
     return {
       fields: [
-        "name",
         "title",
         {
           key: "timeStamp",

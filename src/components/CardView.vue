@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 import TreeCard from "./TreeCard";
 
@@ -25,10 +25,45 @@ export default {
     TreeCard
   },
 
+  data() {
+    return {
+      lazyLoadFetches: 1
+    };
+  },
+
   computed: {
     ...mapState(["treeTagMappings"]),
 
     ...mapGetters(["selectedTrees"])
+  },
+
+  methods: {
+    ...mapActions(["fetchTrees"]),
+
+    onScroll({
+      target: {
+        scrollingElement: { scrollTop, clientHeight, scrollHeight }
+      }
+    }) {
+      const preemptionValue = 500;
+
+      // hitting the bottom of the page
+      if (scrollTop + clientHeight + preemptionValue >= scrollHeight) {
+        this.lazyLoadFetches += 1;
+
+        if (!this.loading) {
+          this.fetchTrees(this.lazyLoadFetches);
+        }
+      }
+    }
+  },
+
+  mounted() {
+    window.addEventListener("scroll", this.onScroll);
+  },
+
+  destroyed() {
+    window.removeEventListener("scroll", this.onScroll);
   }
 };
 </script>
