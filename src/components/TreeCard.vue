@@ -1,18 +1,9 @@
 <template>
-  <b-card
-    v-animate-on-scroll
-    class="tree-card"
-    footer-class="d-flex justify-content-center"
-    :img-src="tree.imgUrl"
-    img-height="200px"
-    img-alt="Tree Image"
-    img-top
-  >
-    <b-card-title>
-      <h3 class="tree-card-title">{{ tree.title }}</h3>
-    </b-card-title>
+  <b-card class="tree-card" footer-class="d-flex justify-content-center">
+    <img v-lazy-load :data-src="tree.imgUrl" alt="tree image" />
 
-    <b-card-text>
+    <b-card-text class="p-3">
+      <h3 class="tree-card-title">{{ tree.title }}</h3>
       <h6 class="d-flex flex-row justify-space-between">
         <strong class="mr-2">Date</strong>
         <span>{{ formattedTimestamp }}</span>
@@ -65,9 +56,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .tree-card-title {
-  font-weight: bold;
   padding-bottom: 5px;
   margin-bottom: 10px;
   border-bottom: 1px solid black;
@@ -81,7 +71,13 @@ export default {
   margin: 0 1em 2em 0;
 }
 
-.tree-card > img {
+.tree-card .card-body {
+  padding: 0;
+}
+
+img {
+  height: 200px;
+  width: 100%;
   object-fit: cover !important;
 }
 

@@ -10,7 +10,7 @@ Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue);
 
-Vue.directive(lazyLoad);
+Vue.directive("lazy-load", lazyLoad);
 
 new Vue({
   store,
