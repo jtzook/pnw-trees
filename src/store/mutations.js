@@ -1,6 +1,6 @@
 export default {
-  FETCH_TREES(state) {
-    state.loading = true;
+  FETCH_TREES(state, pageNumber) {
+    state.loading = pageNumber === 1;
     state.selectedSort = "";
     state.selectedFilter = "";
     state.fetchError = null;

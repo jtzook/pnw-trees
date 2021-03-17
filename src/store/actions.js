@@ -13,8 +13,8 @@ const shuffle = arr => {
 };
 
 export default {
-  fetchTrees: async ({ state, getters, commit }) => {
-    commit("FETCH_TREES");
+  fetchTrees: async ({ state, getters, commit }, page = 1) => {
+    commit("FETCH_TREES", page);
 
     // https://www.flickr.com/services/api/flickr.photos.search.html
 
@@ -34,8 +34,8 @@ export default {
             api_key: config.api_key,
             tags: [treeTagData[0].tag, "tree"],
             text: treeTagData[0].tag,
-            page: 1,
-            per_page: 7,
+            page,
+            per_page: 5,
             sort: "relevance",
             content_type: 1, // photos only
             geo_context: 2, // outdoors
@@ -58,7 +58,7 @@ export default {
       commit("FETCH_TREES_FAILURE", e);
     }
 
-    const trees = [];
+    const trees = page === 1 ? [] : [...state?.trees];
 
     results?.map((result, index) => {
       const photoArray = get(result, "data.photos.photo", []);
@@ -87,10 +87,13 @@ export default {
       }
     });
 
-    // TODO: remove timeout
-    setTimeout(() => {
+    if (page === 1) {
+      setTimeout(() => {
+        commit("FETCH_TREES_SUCCESS", shuffle(trees));
+      }, 3000);
+    } else {
       commit("FETCH_TREES_SUCCESS", shuffle(trees));
-    }, 3000);
+    }
   },
 
   applyFilter: ({ commit }, selection) => {

@@ -8,12 +8,12 @@
         { loading: loading }
       ]"
     >
-      <b-overlay v-if="loading" :show="loading" :opacity="0.75" blur="1px">
+      <b-overlay :show="loading" :opacity="0.75" blur="1px">
         <template #overlay>
           <LoadingAnimation class="align-self-center" />
         </template>
       </b-overlay>
-      <div v-if="!loading">
+      <div v-show="!loading">
         <CardView v-if="selectedView === 'card'" />
         <TableView v-else />
       </div>
@@ -41,6 +41,12 @@ export default {
     LoadingAnimation
   },
 
+  data() {
+    return {
+      lazyLoadFetches: 1
+    };
+  },
+
   computed: {
     ...mapState(["selectedView", "loading"]),
 
@@ -48,11 +54,34 @@ export default {
   },
 
   methods: {
-    ...mapActions(["fetchTrees"])
+    ...mapActions(["fetchTrees"]),
+
+    onScroll({
+      target: {
+        scrollingElement: { scrollTop, clientHeight, scrollHeight }
+      }
+    }) {
+      const preemptionValue = 500;
+
+      // hitting the bottom of the page
+      if (scrollTop + clientHeight + preemptionValue >= scrollHeight) {
+        this.lazyLoadFetches += 1;
+
+        this.fetchTrees(this.lazyLoadFetches);
+      }
+    }
   },
 
   created() {
     this.fetchTrees();
+  },
+
+  mounted() {
+    window.addEventListener("scroll", this.onScroll);
+  },
+
+  destroyed() {
+    window.removeEventListener("scroll", this.onScroll);
   }
 };
 </script>
