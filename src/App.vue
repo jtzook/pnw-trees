@@ -4,14 +4,11 @@
 
     <div
       :class="[
-        'py-4',
-        'content',
-        'd-flex',
-        'justify-content-center',
+        'py-4 content d-flex justify-content-center',
         { loading: loading }
       ]"
     >
-      <b-overlay :show="loading" :opacity="0.75" blur="1px">
+      <b-overlay v-if="loading" :show="loading" :opacity="0.75" blur="1px">
         <template #overlay>
           <LoadingAnimation class="align-self-center" />
         </template>

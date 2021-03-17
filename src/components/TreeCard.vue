@@ -1,5 +1,6 @@
 <template>
   <b-card
+    v-animate-on-scroll
     class="tree-card"
     footer-class="d-flex justify-content-center"
     :img-src="tree.imgUrl"

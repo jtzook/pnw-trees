@@ -1,6 +1,4 @@
-import Vue from "vue";
-
-Vue.directive("animate-on-scroll", {
+export const animateOnScroll = {
   bind: el => {
     el.classList.add("before-enter");
 
@@ -16,4 +14,4 @@ Vue.directive("animate-on-scroll", {
 
     observer.observe(el);
   }
-});
+};

@@ -1,6 +1,4 @@
-import Vue from "vue";
-
-Vue.directive("lazy-load", {
+export const lazyLoad = {
   inserted: el => {
     function loadImage() {
       const imageElement = el.nodeName === "IMG" ? el : null;
@@ -36,4 +34,4 @@ Vue.directive("lazy-load", {
 
     observer.observe(el);
   }
-});
+};
