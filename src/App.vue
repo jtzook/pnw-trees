@@ -8,12 +8,12 @@
         { loading: loading }
       ]"
     >
-      <b-overlay :show="loading" :opacity="0.75" blur="1px">
+      <b-overlay :show="loading && !trees.length" :opacity="0.75" blur="1px">
         <template #overlay>
           <LoadingAnimation class="align-self-center" />
         </template>
       </b-overlay>
-      <div v-show="!loading">
+      <div v-show="trees.length">
         <CardView v-if="selectedView === 'card'" />
         <TableView v-else />
       </div>
@@ -48,7 +48,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["selectedView", "loading"]),
+    ...mapState(["trees", "selectedView", "loading", "apiPageNumber"]),
 
     ...mapGetters(["treeTags"])
   },
@@ -67,7 +67,9 @@ export default {
       if (scrollTop + clientHeight + preemptionValue >= scrollHeight) {
         this.lazyLoadFetches += 1;
 
-        this.fetchTrees(this.lazyLoadFetches);
+        if (!this.loading) {
+          this.fetchTrees(this.lazyLoadFetches);
+        }
       }
     }
   },

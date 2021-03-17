@@ -58,7 +58,7 @@ export default {
       commit("FETCH_TREES_FAILURE", e);
     }
 
-    const trees = page === 1 ? [] : [...state?.trees];
+    const trees = [];
 
     results?.map((result, index) => {
       const photoArray = get(result, "data.photos.photo", []);
@@ -92,7 +92,7 @@ export default {
         commit("FETCH_TREES_SUCCESS", shuffle(trees));
       }, 3000);
     } else {
-      commit("FETCH_TREES_SUCCESS", shuffle(trees));
+      commit("FETCH_TREES_SUCCESS", trees, true);
     }
   },
 

@@ -21,7 +21,7 @@ export const lazyLoad = {
 
       if (imageElement) {
         imageElement.addEventListener("load", () => {
-          setTimeout(() => el.classList.add("loaded"), 100);
+          setTimeout(() => el.classList.add("loaded"));
         });
 
         // TODO: throw error...somewhere

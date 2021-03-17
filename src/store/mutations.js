@@ -1,13 +1,19 @@
 export default {
   FETCH_TREES(state, pageNumber) {
-    state.loading = pageNumber === 1;
+    state.loading = true;
+    state.apiPageNumber = pageNumber;
     state.selectedSort = "";
     state.selectedFilter = "";
     state.fetchError = null;
   },
 
-  FETCH_TREES_SUCCESS(state, trees) {
-    state.trees = trees;
+  FETCH_TREES_SUCCESS(state, trees, lazy = false) {
+    if (!lazy) {
+      state.trees = trees;
+    } else {
+      state.trees = [...state.trees, trees];
+    }
+
     state.loading = false;
   },
 

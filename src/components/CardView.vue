@@ -1,9 +1,14 @@
 <template>
   <b-row class="justify-content-center" no-gutters>
     <b-col cols="10">
-      <b-card-group columns>
-        <TreeCard v-for="tree in selectedTrees" :key="tree.id" :tree="tree" />
-      </b-card-group>
+      <div class="flex-grid">
+        <TreeCard
+          class="flex-card"
+          v-for="tree in selectedTrees"
+          :key="tree.id"
+          :tree="tree"
+        />
+      </div>
     </b-col>
   </b-row>
 </template>
@@ -27,3 +32,16 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.flex-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.flex-card {
+  flex: 1 0 25%;
+}
+</style>
