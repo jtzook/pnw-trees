@@ -12,12 +12,14 @@
       ]"
     >
       <b-overlay :show="loading" :opacity="0.75" blur="1px">
-        <CardView v-if="selectedView === 'card'" />
-        <TableView v-else />
         <template #overlay>
           <LoadingAnimation class="align-self-center" />
         </template>
       </b-overlay>
+      <div v-if="!loading">
+        <CardView v-if="selectedView === 'card'" />
+        <TableView v-else />
+      </div>
     </div>
   </div>
 </template>

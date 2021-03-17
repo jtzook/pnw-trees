@@ -8,16 +8,22 @@
     img-top
   >
     <b-card-title>
-      <div class="tree-card-title">{{ tree.title }}</div>
+      <h3 class="tree-card-title">{{ tree.title }}</h3>
     </b-card-title>
 
-    <b-card-text class="text-left">
-      <p v-if="tree.timeStamp">
-        <strong>Date</strong>
-        <br />
-        {{ formattedTimestamp }}
-      </p>
+    <b-card-text>
+      <h6 class="d-flex flex-row justify-space-between">
+        <strong class="mr-2">Date</strong>
+        <span>{{ formattedTimestamp }}</span>
+      </h6>
+      <h6 class="d-flex flex-row justify-space-between">
+        <strong class="mr-2">Tags</strong>
+        <span class="overflow-hidden text-nowrap text-truncate">{{
+          tree.userTags
+        }}</span>
+      </h6>
     </b-card-text>
+
     <template slot="footer">
       <TreeTag :tag="tree.tag" />
     </template>
@@ -27,6 +33,7 @@
 <script>
 import { startCase } from "lodash";
 import { mapGetters } from "vuex";
+
 import TreeTag from "./TreeTag";
 
 export default {
@@ -60,14 +67,16 @@ export default {
 <style scoped>
 .tree-card-title {
   font-weight: bold;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
   border-bottom: 1px solid black;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .tree-card {
   max-width: 20rem;
-  min-height: 30rem;
   margin: 0 1em 2em 0;
 }
 

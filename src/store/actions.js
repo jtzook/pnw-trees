@@ -4,6 +4,14 @@ import axios from "axios";
 import { get } from "lodash";
 import config from "../../config/config";
 
+const shuffle = arr => {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+};
+
 export default {
   fetchTrees: async ({ state, getters, commit }) => {
     commit("FETCH_TREES");
@@ -27,7 +35,7 @@ export default {
             tags: [treeTagData[0].tag, "tree"],
             text: treeTagData[0].tag,
             page: 1,
-            per_page: 3,
+            per_page: 7,
             sort: "relevance",
             content_type: 1, // photos only
             geo_context: 2, // outdoors
@@ -81,7 +89,7 @@ export default {
 
     // TODO: remove timeout
     setTimeout(() => {
-      commit("FETCH_TREES_SUCCESS", trees);
+      commit("FETCH_TREES_SUCCESS", shuffle(trees));
     }, 3000);
   },
 
